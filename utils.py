@@ -99,6 +99,11 @@ def get_calibration_frame_dist(transect_dir, calibration_frame_id):
 
 
 def calibrate(x, y, method, n=2, poly_deg=5):
+    if len(x) == 0:
+        return lambda data: data
+    if len(x) == 1:
+        return lambda data: data * y[0] / x[0]
+
     with random_seed_manager():
 
         assert n in [1, 2]

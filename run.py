@@ -114,6 +114,20 @@ def run(config: Config):
 
                 # sort calibration frames
                 calibration_frames = OrderedDict(sorted(calibration_frames.items(), key=lambda kv: kv[0]))
+                # print('Calibration Frames = ' + str(len(calibration_frames)))
+
+                # frames = [1.0]
+                # calibration_frames = OrderedDict((k, calibration_frames[k]) for k in frames if k in calibration_frames)
+
+                first_frame = next(iter(calibration_frames.items()))
+                last_frame = next(reversed(calibration_frames.items()))
+                calibration_frames = OrderedDict([first_frame, last_frame])
+
+                # print('Calibration Frames = ' + str(len(calibration_frames)))
+                #
+                # for key in calibration_frames.keys():
+                #     print('key = ' + str(key))
+
 
                 # get disparity of the farthest calibration frame
                 farthest_calibration_frame_disp = list(calibration_frames.values())[-1] if len(calibration_frames) > 0 else None

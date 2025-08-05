@@ -23,6 +23,13 @@ class DPT(DownloadableWeights):
         weights_path = self.get_weights(weights_url, weights_md5)
 
         providers = get_onnxruntime_providers()
+
+        num_threads = int(os.getenv('SLURM_CPUS_PER_TASK', '28'))
+
+        sess_options = onnxruntime.SessionOptions()
+        sess_options.intra_op_num_threads = num_threads
+        sess_options.inter_op_num_threads = num_threads
+
         try:
             self.session = onnxruntime.InferenceSession(
                 weights_path,

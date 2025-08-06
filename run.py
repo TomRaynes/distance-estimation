@@ -119,9 +119,9 @@ def run(config: Config):
                 # frames = [1.0]
                 # calibration_frames = OrderedDict((k, calibration_frames[k]) for k in frames if k in calibration_frames)
 
-                first_frame = next(iter(calibration_frames.items()))
-                last_frame = next(reversed(calibration_frames.items()))
-                calibration_frames = OrderedDict([first_frame, last_frame])
+                # first_frame = next(iter(calibration_frames.items()))
+                # last_frame = next(reversed(calibration_frames.items()))
+                # calibration_frames = OrderedDict([first_frame, last_frame])
 
                 # print('Calibration Frames = ' + str(len(calibration_frames)))
                 #
